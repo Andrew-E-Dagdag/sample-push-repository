@@ -1,10 +1,1 @@
 Any changes here should trigger the workflow, which generates the build file, and pushes the generated file to the receiving repo
-
-Triggering workflow
-Another test
-Another another test
-Another another another test
-Aaaaaaaaaaa
-
-IT'S WORKINGGGGGGGG
-😎😎😎😎😎😎😎😎
