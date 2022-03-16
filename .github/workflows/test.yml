@@ -6,10 +6,6 @@ on:
   push:
     paths:
       - "backend/src/test-file.txt"
-# steps:
-#   - uses: actions/checkout@v2
-#   - name: Create output folder and files
-#     run:  sh ./generate_files.sh
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,7 +17,7 @@ jobs:
         uses: plocket/push-generated-file@master
         with:
           token: ${{ secrets.API_TOKEN_GITHUB }}
-          source_file_path: 'path/to/build/file.txt'
+          source_file_path: 'path/to/build/'
           destination_repo: 'Andrew-E-Dagdag/sample-receive-repository'
           destination_folder: 'path/to/build/in/frontend/'
           target_branch: 'main'
