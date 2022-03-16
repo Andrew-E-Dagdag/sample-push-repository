@@ -6,7 +6,10 @@ on:
   push:
     paths:
       - "backend/src/test-file.txt"
-
+# steps:
+#   - uses: actions/checkout@v2
+#   - name: Create output folder and files
+#     run:  sh ./generate_files.sh
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,18 +17,28 @@ jobs:
       - uses: actions/checkout@v2
       - name: creates output
         run:  sh ./devspaces/build.sh
-      - name: Pushes to another repository
-        id: push_directory
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      - name: Push files
+        uses: plocket/push-generated-file@master
         with:
-          source-directory: path/to/build/
-          destination-github-username: 'Andrew-E-Dagdag'
-          destination-repository-name: 'sample-receive-repository'
-          user-email: andrew.e.dagdag@gmail.com
-          commit-message: See ORIGIN_COMMIT from $GITHUB_REF
-          target-branch: main
-          target-directory: path/to/build/in/frontend/
+          token: ${{ secrets.API_TOKEN_GITHUB }}
+          source_file_path: 'path/to/build/file.txt'
+          destination_repo: 'Andrew-E-Dagdag/sample-receive-repository'
+          destination_folder: 'path/to/build/in/frontend/'
+          target_branch: 'main'
+          author: 'aedagdag'
+          author_email: 'andrew.e.dagdag@gmail.com'
+#       - name: Pushes to another repository
+#         id: push_directory
+#         uses: cpina/github-action-push-to-another-repository@main
+#         env:
+#           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+#         with:
+#           source-directory: path/to/build/
+#           destination-github-username: 'Andrew-E-Dagdag'
+#           destination-repository-name: 'sample-receive-repository'
+#           user-email: andrew.e.dagdag@gmail.com
+#           commit-message: See ORIGIN_COMMIT from $GITHUB_REF
+#           target-branch: main
+#           target-directory: path/to/build/in/frontend/
       - name: Test get variable exported by push-to-another-repository
         run: echo $DESTINATION_CLONED_DIRECTORY
