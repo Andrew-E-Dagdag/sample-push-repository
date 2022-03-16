@@ -27,19 +27,5 @@ jobs:
           target_branch: 'main'
           author: 'Andrew-E-Dagdag'
           author_email: 'andrew.e.dagdag@gmail.com'
-# Another sort of working config from cpina, but currently deletes all files and folders in the target repo (really bad, oof)
-#       - name: Pushes to another repository
-#         id: push_directory
-#         uses: cpina/github-action-push-to-another-repository@main
-#         env:
-#           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-#         with:
-#           source-directory: path/to/build/
-#           destination-github-username: 'Andrew-E-Dagdag'
-#           destination-repository-name: 'sample-receive-repository'
-#           user-email: andrew.e.dagdag@gmail.com
-#           commit-message: See ORIGIN_COMMIT from $GITHUB_REF
-#           target-branch: main
-#           target-directory: path/to/build/in/frontend/
       - name: Test get variable exported by push-to-another-repository
         run: echo $DESTINATION_CLONED_DIRECTORY
