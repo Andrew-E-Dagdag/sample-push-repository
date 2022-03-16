@@ -27,5 +27,6 @@ jobs:
           user-email: andrew.e.dagdag@gmail.com
           commit-message: See ORIGIN_COMMIT from $GITHUB_REF
           target-branch: main
+          target-directory: path/to/build/in/frontend/
       - name: Test get variable exported by push-to-another-repository
         run: echo $DESTINATION_CLONED_DIRECTORY
