@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Deploy latest version to other repo
 
 # Only trigger the workflow when there's a change in the specific file, for PE it should be the graphql file
 on:
