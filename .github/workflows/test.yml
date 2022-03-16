@@ -15,27 +15,17 @@ jobs:
       - name: creates output
         run:  sh ./devspaces/build.sh
       - name: Push files
-#         uses: plocket/push-generated-file@master
-#         with:
-#           token: ${{ secrets.API_TOKEN_GITHUB }}
-#           source_file_path: 'backend/src/models/graphql-generated'
-#           # Should be the FE repo and file path
-#           destination_repo: 'Andrew-E-Dagdag/sample-receive-repository'
-#           destination_folder: 'path/to/build/in/frontend'
-#           # You can choose to have a separate branch to push the new build files to
-#           # and push those to main at your leisure, depends on FE
-#           target_branch: 'main'
-#           author: 'Andrew-E-Dagdag'
-#           author_email: 'andrew.e.dagdag@gmail.com'
-#               - name: Pushes test file
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
+          # Set this as the `types.model.ts` file
           source_file: 'backend/src/models/graphql-generated/file.txt'
           destination_repo: 'Andrew-E-Dagdag/sample-receive-repository'
           destination_folder: 'path/to/build/in/frontend'
           user_email: 'andrew.e.dagdag@gmail.com'
           user_name: 'Andrew-E-Dagdag'
+          # Highly recommend having a separate branch purely for sococo.graphql updates
+          destination_branch: 'main'
       - name: Test get variable exported by push-to-another-repository
         run: echo $DESTINATION_CLONED_DIRECTORY
