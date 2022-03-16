@@ -1,3 +1,3 @@
-Initial file
+# sample-push-repository
 
-Test
+This tests the workflow using [plocket](https://github.com/plocket/push-generated-file)
