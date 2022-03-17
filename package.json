@@ -1,6 +1,6 @@
 {
   "name": "@Andrew-E-Dagdag/sample-push-repository",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This tests the workflow using [dmnemec](https://github.com/dmnemec/copy_file_to_another_repo_action)",
   "main": "index.js",
   "scripts": {
